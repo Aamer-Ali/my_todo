@@ -4,6 +4,7 @@ part of 'app_pages.dart';
 abstract class Routes {
   static const HOME = _Paths.HOME;
   static const AUTHENTICATION = _Paths.AUTHENTICATION;
+  static const INITIAL_PAGE = _Paths.AUTHENTICATION;
 }
 
 abstract class _Paths {

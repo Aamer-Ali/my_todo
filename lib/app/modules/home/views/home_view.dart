@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:my_todo/app/modules/authentication/controllers/authentication_controller.dart';
 import 'package:my_todo/app/modules/home/models/cards_model.dart';
+import 'package:my_todo/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -66,6 +68,19 @@ class HomeView extends GetView<HomeController> {
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                    child: InkWell(
+                      onTap: () {
+                        Get.find<AuthenticationController>().signOut();
+                        Get.toNamed(Routes.AUTHENTICATION);
+                      },
+                      child: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -87,7 +102,8 @@ class HomeView extends GetView<HomeController> {
                           child: Container(
                             width: screenWidth * 0.8,
                             child: Card(
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40)),
                               elevation: 20,
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
@@ -117,8 +133,8 @@ class HomeView extends GetView<HomeController> {
                                                   cardList[index]
                                                       .completedTask),
                                               valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                                  primaryColor),
+                                                  AlwaysStoppedAnimation<Color>(
+                                                      primaryColor),
                                               backgroundColor: Colors.grey),
                                         ),
                                         Container(
@@ -149,8 +165,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   String completedTaskPercentage(int total, int completed) {
-    var data =  completed / total * 100;
+    var data = completed / total * 100;
     return data.toStringAsFixed(0);
   }
-
 }

@@ -8,7 +8,7 @@ import 'package:my_todo/app/modules/home/views/home_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.AUTHENTICATION;
+  static const INITIAL = Routes.INITIAL_PAGE;
 
   static final routes = [
     GetPage(
