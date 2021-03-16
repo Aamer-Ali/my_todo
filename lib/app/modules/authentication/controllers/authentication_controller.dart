@@ -11,6 +11,7 @@ class AuthenticationController extends GetxController {
   var isPasswordValid = true.obs;
   final AuthenticationServices services = AuthenticationServices();
   var isLoginSuccess = false.obs;
+  var switchView = true.obs;
 
   @override
   void onInit() {
@@ -47,7 +48,16 @@ class AuthenticationController extends GetxController {
   }
 
   Future<UserModel> signInAnon() {
-   return services.signInAnon();
+    return services.signInAnon();
+  }
+
+  Future<UserModel> signInWithEmailPassword() {
+    return null;
+  }
+
+  Future<UserModel> registerWithEmailPassword() {
+    return services.registerWithEmailAndPassword(
+        email: username.value, password: password.value);
   }
 
   Future signOut() async {

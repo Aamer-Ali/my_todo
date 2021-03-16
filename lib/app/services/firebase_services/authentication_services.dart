@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:my_todo/app/modules/authentication/models/user_model.dart';
 
 class AuthenticationServices {
@@ -53,6 +54,18 @@ class AuthenticationServices {
 //sign in with email password
 
 //register email and password
+  Future<UserModel> registerWithEmailAndPassword(
+      {String email, String password}) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
 
 //sign out
   Future signOut() async {
