@@ -51,8 +51,9 @@ class AuthenticationController extends GetxController {
     return services.signInAnon();
   }
 
-  Future<UserModel> signInWithEmailPassword() {
-    return null;
+  Future<UserModel> signInWithEmailAndPassword() {
+    return services.signInWithEmailAndPassword(
+        email: username.value, password: password.value);
   }
 
   Future<UserModel> registerWithEmailPassword() {
